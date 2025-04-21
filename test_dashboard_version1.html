@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Danger Levels Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            padding: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+        .day-button, .hour-button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hour-button {
+            background-color: #6c757d;
+        }
+        .day-button:hover, .hour-button:hover {
+            background-color: #0056b3;
+        }
+        .hour-buttons-container {
+            display: none;
+            margin-top: 10px;
+        }
+        #plot-container {
+            width: 800px;
+            height: 600px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .plot-image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button class="day-button" onclick="toggleHourButtons(1)">Day 1</button>
+        <div class="hour-buttons-container" id="hour-buttons-1">
+            <button class="hour-button" onclick="showPlot(0)">00 UTC</button>
+            <button class="hour-button" onclick="showPlot(1)">06 UTC</button>
+            <button class="hour-button" onclick="showPlot(2)">12 UTC</button>
+            <button class="hour-button" onclick="showPlot(3)">18 UTC</button>
+        </div>
+        <button class="day-button" onclick="toggleHourButtons(2)">Day 2</button>
+        <div class="hour-buttons-container" id="hour-buttons-2">
+            <button class="hour-button" onclick="showPlot(4)">00 UTC</button>
+            <button class="hour-button" onclick="showPlot(5)">06 UTC</button>
+            <button class="hour-button" onclick="showPlot(6)">12 UTC</button>
+            <button class="hour-button" onclick="showPlot(7)">18 UTC</button>
+        </div>
+        <button class="day-button" onclick="toggleHourButtons(3)">Day 3</button>
+        <div class="hour-buttons-container" id="hour-buttons-3">
+            <button class="hour-button" onclick="showPlot(8)">00 UTC</button>
+            <button class="hour-button" onclick="showPlot(9)">06 UTC</button>
+            <button class="hour-button" onclick="showPlot(10)">12 UTC</button>
+            <button class="hour-button" onclick="showPlot(11)">18 UTC</button>
+        </div>
+        <button class="day-button" onclick="toggleHourButtons(4)">Day 4</button>
+        <div class="hour-buttons-container" id="hour-buttons-4">
+            <button class="hour-button" onclick="showPlot(12)">00 UTC</button>
+            <button class="hour-button" onclick="showPlot(13)">06 UTC</button>
+            <button class="hour-button" onclick="showPlot(14)">12 UTC</button>
+            <button class="hour-button" onclick="showPlot(15)">18 UTC</button>
+        </div>
+    </div>
+    <div id="plot-container">
+        <img id="plot-image" src="D:\\2Courses\\8902\\data\\codes\\analysis\\fire_danger_0.png" alt="Fire Danger Plot" class="plot-image">
+    </div>
+    <script>
+        function toggleHourButtons(day) {
+            const hourButtons = document.querySelectorAll('.hour-buttons-container');
+            hourButtons.forEach(button => button.style.display = 'none');
+            document.getElementById('hour-buttons-' + day).style.display = 'block';
+        }
+
+        function showPlot(index) {
+            const plotPath = `D:\\2Courses\\8902\\data\\codes\\analysis\\fire_danger_${index}.png`;
+            const plotImage = document.getElementById('plot-image');
+            plotImage.src = plotPath;
+        }
+
+        // Show the first plot by default
+        window.onload = function() {
+            showPlot(0);
+        }
+    </script>
+</body>
+</html>
