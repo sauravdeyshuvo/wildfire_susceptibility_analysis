@@ -33,7 +33,7 @@ MODEL_PATHS = {
 }
 
 # 📈 Lookup table linking grid cells to circuits
-CIRCUIT_LOOKUP_PATH = r"C:\Users\15673\OneDrive - The Ohio State University\General - Wildfire Index GEOG 8902\All_Data\Cole_python_stuff\grid_circuit_lookup.csv"
+CIRCUIT_LOOKUP_PATH = r"C:\Users\15673\OneDrive - The Ohio State University\General - Wildfire Index GEOG 8902\All_Data\Wildfire_Grid_to_lines\grid_circuit_lookup.csv"
 grid_circuit_df = pd.read_csv(CIRCUIT_LOOKUP_PATH)
 
 # 📅 Base date for labeling — static if realtime_mode is off, dynamic otherwise
